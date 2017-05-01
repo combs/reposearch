@@ -7,16 +7,30 @@ Yeah, Atom/whatever can do it, but this is mad fast.
 
 Add files to somewhere in your $PATH, perhaps `/usr/local/bin`
 
+```
+sudo cp repo* /usr/local/bin
+```
+
+
 ## Usage
 
 ```
 reposearch [terms]
 reposearch [grep arguments] [terms]
+
+# Example--to see a few lines of context,
+reposearch -3 [terms]
 ```
+
+If the index does not yet exist, `reposearch` will call `repoindex` automatically. 
+
+Indexes are created a directory above the repository, as `.index.REPONAME.gz`
+
+If the index becomes stale, use `repoindex`:
 
 ```
 repoindex 
-# uses base dir of $PWD repo
+# looks for a repository in the current directory or higher
 
 repoindex [repo base dir]
 ```
