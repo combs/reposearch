@@ -1,0 +1,15 @@
+#!/bin/bash
+DIR=$1
+if [ "$DIR" == "" ]
+then
+	DIR=`git rev-parse --show-toplevel`
+fi
+
+REPONAME=`basename $DIR`
+INDEX=$DIR/../.index.$REPONAME.gz
+echo Indexing $REPONAME to $INDEX
+
+cd $DIR
+grep -R '$' * --exclude=.git --exclude=app.\* --exclude=\*.min.\* | gzip > $INDEX
+
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+DIR=`git rev-parse --show-toplevel`
+REPONAME=`basename $DIR`
+INDEX=$DIR/../.index.$REPONAME.gz
+echo Searching in $REPONAME
+echo $INDEX
+if [ ! -e $INDEX ]
+then
+echo "No index. Creating $INDEX"
+repoindex $DIR
+fi
+
+zgrep $@ $INDEX
+
+
