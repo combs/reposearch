@@ -39,3 +39,9 @@ repoindex [repo base dir]
 
 - Automatically reindex after X days
 
+## Caveats
+
+- Ignores `*.min.*`, `app.*`, `.git/*`
+
+
+
