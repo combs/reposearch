@@ -10,6 +10,6 @@ INDEX=$DIR/../.index.$REPONAME.gz
 echo Indexing $REPONAME to $INDEX
 
 cd $DIR
-grep -R '$' * --exclude=.git --exclude=app.\* --exclude=\*.min.\* | gzip > $INDEX
+grep -IR '$' * --exclude-dir=.git --exclude=app.\* --exclude=\*.min.\* --exclude-dir=\*/vendor --exclude-dir=\*/node_modules | gzip -9 > $INDEX
 
 
